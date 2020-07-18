@@ -1,1 +1,2 @@
-gunicorn = 20.0.0
+gunicorn == 19.7.1
+django-heroku ==0.3.1
